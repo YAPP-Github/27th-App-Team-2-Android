@@ -25,6 +25,12 @@ reviews:
     3. 크리티컬한 이슈 (NPE, 메모리 릭, 무한루프 등)
     4. 컴파일 에러 또는 런타임 에러 가능성
 
+    MVI 패턴 규칙:
+    - UI 상태 표현은 반드시 State를 통해서만 해야 함
+    - 사용자 터치/액션은 Intent를 통해 ViewModel로 전달
+    - 일회성 이벤트(Toast, Navigation, SnackBar 등)는 Effect를 통해 처리
+    - Screen에서 직접 상태를 변경하거나 remember로 UI 로직을 관리하면 안 됨
+
     다음은 지적하지 마:
     - Text, Image, Icon 컴포넌트의 contentDescription = null
     - 사소한 스타일 개선 제안
