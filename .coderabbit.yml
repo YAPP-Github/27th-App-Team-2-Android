@@ -1,0 +1,22 @@
+reviews:
+    profile: chill   # aggressive → chill / relaxed
+    request_changes_workflow: false
+    high_level_summary: true
+    poem: false
+
+    auto_review:
+        enabled: true
+        drafts: false
+
+    comment_style:
+        inline: true
+        conversational: false
+
+    suggestions:
+        enabled: false  # 스타일/사소한 개선 제안 끄기
+
+    confidence:
+        level: low      # 확신 없는 추측성 코멘트 감소
+
+    instructions: |
+        - Text, Image, Icon 같은 컴포넌트의 contentDescription 속성이 null 이더라도 경고하지마.
