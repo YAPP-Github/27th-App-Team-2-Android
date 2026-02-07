@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.neki.android.library)
     alias(libs.plugins.neki.android.library.compose)
+    alias(libs.plugins.neki.hilt)
 }
 
 android {
@@ -9,5 +10,7 @@ android {
 
 dependencies {
     api(libs.timber)
-
+    api(libs.kakao.user)
+    implementation(libs.androidx.security.crypto)
+    implementation(libs.androidx.core.ktx)
 }

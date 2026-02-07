@@ -1,0 +1,18 @@
+plugins {
+    alias(libs.plugins.neki.android.feature.impl)
+}
+
+android {
+    namespace = "com.neki.android.feature.map.impl"
+}
+
+dependencies {
+    implementation(projects.feature.map.api)
+    api(libs.map.sdk)
+    implementation(libs.naver.map.compose)
+    implementation(libs.play.services.location)
+
+    implementation(libs.kotlinx.collections.immutable)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.activity.compose)
+}
