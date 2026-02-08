@@ -1,21 +1,16 @@
 package com.neki.android.buildlogic.extensions
 
-import com.android.build.api.dsl.CommonExtension
 import com.neki.android.buildlogic.const.BuildConst
+import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
-import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 internal fun Project.configureAndroid(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *, *>
 ) {
     commonExtension.apply {
         compileSdk = BuildConst.COMPILE_SDK
-
-        defaultConfig {
-            minSdk = BuildConst.MIN_SDK
-        }
 
         compileOptions {
             sourceCompatibility = BuildConst.JAVA_VERSION
@@ -26,8 +21,14 @@ internal fun Project.configureAndroid(
             jvmTarget = BuildConst.JDK_VERSION.toString()
         }
 
-        dependencies {
-            add("detektPlugins", libs.findLibrary("detekt.formatting").get())
+        buildTypes {
+            getByName("release") {
+                isMinifyEnabled = true
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android.txt"),
+                    "proguard-rules.pro",
+                )
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ class AndroidApplicationConventionPlugin: Plugin<Project> {
                 defaultConfig.apply {
                     applicationId = BuildConst.APPLICATION_ID
 
+                    minSdk = BuildConst.MIN_SDK
                     targetSdk = BuildConst.TARGET_SDK
 
                     versionCode = BuildConst.VERSION_CODE
