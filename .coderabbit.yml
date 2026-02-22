@@ -1,0 +1,75 @@
+# CodeRabbit AI 코드 리뷰 설정 파일
+# 문서: https://docs.coderabbit.ai/configuration
+
+language: ko-KR
+
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+
+  auto_review:
+    enabled: true
+    drafts: false
+
+  path_filters:
+    - "**/*.kt"
+    - "**/*.kts"
+    - "!**/build/**"
+
+  instructions: |
+    리뷰 시 다음 사항만 집중해서 검토해줘:
+    1. 오타 (변수명, 함수명, 주석 등)
+    2. 아키텍처/디자인 패턴 일관성 (MVI 패턴, api/impl 모듈 분리 등)
+    3. 크리티컬한 이슈 (NPE, 메모리 릭, 무한루프 등)
+    4. 컴파일 에러 또는 런타임 에러 가능성
+
+    MVI 패턴 규칙:
+    - UI 상태 표현은 반드시 State를 통해서만 해야 함
+    - 사용자 터치/액션은 Intent를 통해 ViewModel로 전달
+    - 일회성 이벤트(Toast, Navigation, SnackBar 등)는 Effect를 통해 처리
+    - Screen에서 직접 상태를 변경하거나 remember로 UI 로직을 관리하면 안 됨
+
+    다음은 지적하지 마:
+    - Text, Image, Icon 컴포넌트의 contentDescription = null
+    - 사소한 스타일 개선 제안
+    - 코드 포맷팅
+
+tools:
+  detekt:
+    enabled: true
+  shellcheck:
+    enabled: false
+  ruff:
+    enabled: false
+  markdownlint:
+    enabled: false
+  biome:
+    enabled: false
+  hadolint:
+    enabled: false
+  swiftlint:
+    enabled: false
+  phpstan:
+    enabled: false
+  golangci-lint:
+    enabled: false
+  yamllint:
+    enabled: false
+  eslint:
+    enabled: false
+  flake8:
+    enabled: false
+  rubocop:
+    enabled: false
+  pmd:
+    enabled: false
+  cppcheck:
+    enabled: false
+  clippy:
+    enabled: false
+  sqlfluff:
+    enabled: false
+  pylint:
+    enabled: false
