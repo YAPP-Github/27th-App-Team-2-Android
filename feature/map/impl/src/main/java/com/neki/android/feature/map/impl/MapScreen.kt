@@ -190,7 +190,7 @@ fun MapRoute(
                         LatLng(sideEffect.northEast.latitude, sideEffect.northEast.longitude),
                     )
                     cameraPositionState.animate(
-                        update = CameraUpdate.fitBounds(bounds, 100),
+                        update = CameraUpdate.fitBounds(bounds, 100, 200, 100, 200),
                         animation = CameraAnimation.Easing,
                         durationMs = MapConst.DEFAULT_CAMERA_ANIMATION_DURATIONS_MS,
                     )
