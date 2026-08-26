@@ -11,4 +11,6 @@ dependencies {
 
     implementation(projects.feature.auth.api)
 
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

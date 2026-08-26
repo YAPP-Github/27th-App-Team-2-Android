@@ -115,7 +115,6 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.messaging)
-    implementation(libs.facebook.core)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation3.ui)
