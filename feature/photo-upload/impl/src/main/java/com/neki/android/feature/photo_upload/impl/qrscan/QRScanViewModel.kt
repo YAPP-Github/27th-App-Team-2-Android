@@ -7,6 +7,7 @@ import com.neki.android.core.dataapi.repository.DiscordWebhookRepository
 import com.neki.android.core.ui.MviIntentStore
 import com.neki.android.core.ui.mviIntentStore
 import com.neki.android.feature.photo_upload.impl.BuildConfig
+import com.neki.android.feature.photo_upload.impl.qrscan.util.SayCheeseUrlMatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -161,7 +162,8 @@ internal class QRScanViewModel @Inject constructor(
             url.containsConfiguredUrl(BuildConfig.PHOTO_SIGNATURE_URL_2) ||
             url.containsConfiguredUrl(BuildConfig.HARU_FILM_URL) ||
             url.containsConfiguredUrl(BuildConfig.PHOTO_GRAY_URL) ||
-            url.containsConfiguredUrl(BuildConfig.MONO_MANSION_URL)
+            url.containsConfiguredUrl(BuildConfig.MONO_MANSION_URL) ||
+            SayCheeseUrlMatcher.isSupportedQrUrl(url)
     }
 
     private fun isShouldFirstDownloadBrand(url: String): Boolean {

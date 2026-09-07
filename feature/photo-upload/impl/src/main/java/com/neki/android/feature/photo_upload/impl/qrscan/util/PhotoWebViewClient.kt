@@ -64,6 +64,12 @@ class PhotoWebViewClient(
                 Timber.d("모노맨션 이미지")
                 onImageUrlDetected(url)
             }
+
+            // 세이치즈
+            SayCheeseUrlMatcher.isOriginalImageUrl(url) -> {
+                Timber.d("세이치즈 이미지")
+                onImageUrlDetected(url)
+            }
         }
 
         return super.shouldInterceptRequest(view, request)
