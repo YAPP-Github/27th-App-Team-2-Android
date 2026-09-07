@@ -156,6 +156,7 @@ internal class QRScanViewModel @Inject constructor(
 
     private fun isSupportedBrand(url: String): Boolean {
         return url.containsConfiguredUrl(BuildConfig.PHOTOISM_URL) ||
+            url.containsConfiguredUrl(BuildConfig.PIXPIXLINK_URL) ||
             url.containsConfiguredUrl(BuildConfig.LIFE_FOUR_CUT_URL) ||
             url.containsConfiguredUrl(BuildConfig.PHOTO_SIGNATURE_URL_1) ||
             url.containsConfiguredUrl(BuildConfig.PHOTO_SIGNATURE_URL_2) ||

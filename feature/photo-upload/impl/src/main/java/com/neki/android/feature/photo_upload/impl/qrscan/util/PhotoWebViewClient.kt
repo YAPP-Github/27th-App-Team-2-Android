@@ -28,6 +28,19 @@ class PhotoWebViewClient(
                 onImageUrlDetected(url)
             }
 
+            // 포토이즘 신규 다운로드 호스트
+            url.contains(BuildConfig.PHOTOISM_IMAGE_URL_2) && url.endsWith(BuildConfig.PHOTOISM_IMAGE_URL_MIME_TYPE) -> {
+                Timber.d("포토이즘 이미지")
+                onImageUrlDetected(url)
+            }
+
+            // 픽픽링크
+            url.contains(BuildConfig.PIXPIXLINK_IMAGE_URL) &&
+                url.endsWith(BuildConfig.PIXPIXLINK_IMAGE_URL_MIME_TYPE) -> {
+                Timber.d("픽픽링크 이미지")
+                onImageUrlDetected(url)
+            }
+
             // 인생네컷
             url.contains(BuildConfig.LIFE_FOUR_CUT_IMAGE_URL) && url.endsWith(BuildConfig.LIFE_FOUR_CUT_IMAGE_URL_MIME_TYPE) -> {
                 Timber.d("인생네컷 이미지")
