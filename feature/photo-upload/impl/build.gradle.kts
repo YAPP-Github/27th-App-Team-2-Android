@@ -69,4 +69,6 @@ dependencies {
     implementation(libs.androidx.camera.compose)
     implementation(libs.guava)
 
+    testImplementation(libs.junit)
+
 }

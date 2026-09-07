@@ -6,7 +6,7 @@ import com.neki.android.core.common.coroutine.di.ApplicationScope
 import com.neki.android.core.dataapi.repository.DiscordWebhookRepository
 import com.neki.android.core.ui.MviIntentStore
 import com.neki.android.core.ui.mviIntentStore
-import com.neki.android.feature.photo_upload.impl.BuildConfig
+import com.neki.android.feature.photo_upload.impl.qrscan.util.QRUrlMatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -155,26 +155,10 @@ internal class QRScanViewModel @Inject constructor(
     }
 
     private fun isSupportedBrand(url: String): Boolean {
-        return url.containsConfiguredUrl(BuildConfig.PHOTOISM_URL) ||
-            url.containsConfiguredUrl(BuildConfig.PIXPIXLINK_URL) ||
-            url.containsConfiguredUrl(BuildConfig.LIFE_FOUR_CUT_URL) ||
-            url.containsConfiguredUrl(BuildConfig.PHOTO_SIGNATURE_URL_1) ||
-            url.containsConfiguredUrl(BuildConfig.PHOTO_SIGNATURE_URL_2) ||
-            url.containsConfiguredUrl(BuildConfig.HARU_FILM_URL) ||
-            url.containsConfiguredUrl(BuildConfig.PHOTO_GRAY_URL) ||
-            url.containsConfiguredUrl(BuildConfig.MONO_MANSION_URL)
+        return QRUrlMatcher.isSupportedBrand(url)
     }
 
     private fun isShouldFirstDownloadBrand(url: String): Boolean {
-        return url.containsConfiguredUrl(BuildConfig.MONO_MANSION_URL) ||
-            url.containsConfiguredUrl(BuildConfig.PHOTO_GRAY_URL) ||
-            url.containsConfiguredUrl(BuildConfig.PHOTO_SIGNATURE_URL_1) ||
-            url.containsConfiguredUrl(BuildConfig.PHOTO_SIGNATURE_URL_2)
-    }
-
-    private fun String.containsConfiguredUrl(configuredUrl: String?): Boolean {
-        if (configuredUrl.isNullOrBlank()) return false
-
-        return contains(configuredUrl)
+        return QRUrlMatcher.isFirstDownloadRequired(url)
     }
 }
