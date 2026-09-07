@@ -10,7 +10,4 @@ dependencies {
     implementation(libs.androidx.activity.compose)
 
     implementation(projects.feature.auth.api)
-
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlinx.coroutines.test)
 }
