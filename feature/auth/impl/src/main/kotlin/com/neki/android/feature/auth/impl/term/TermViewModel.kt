@@ -2,6 +2,8 @@ package com.neki.android.feature.auth.impl.term
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.neki.android.core.analytics.event.MetaAnalyticsEvent
+import com.neki.android.core.analytics.logger.MetaAnalyticsLogger
 import com.neki.android.core.dataapi.repository.AuthRepository
 import com.neki.android.core.dataapi.repository.TermRepository
 import com.neki.android.core.ui.MviIntentStore
@@ -16,7 +18,9 @@ import javax.inject.Inject
 class TermViewModel @Inject constructor(
     private val termRepository: TermRepository,
     private val authRepository: AuthRepository,
+    private val metaAnalyticsLogger: MetaAnalyticsLogger,
 ) : ViewModel() {
+    private var isSubmittingTerms = false
 
     val store: MviIntentStore<TermState, TermIntent, TermSideEffect> =
         mviIntentStore(
@@ -55,7 +59,8 @@ class TermViewModel @Inject constructor(
             }
 
             TermIntent.ClickNext -> {
-                if (state.isAllRequiredTermChecked) {
+                if (state.isAllRequiredTermChecked && !isSubmittingTerms) {
+                    isSubmittingTerms = true
                     agreeTerms(state, reduce, postSideEffect)
                 }
             }
@@ -90,9 +95,11 @@ class TermViewModel @Inject constructor(
         termRepository.agreeTerms(checkedTermIds)
             .onSuccess {
                 authRepository.setCompletedOnboarding(true)
+                metaAnalyticsLogger.log(MetaAnalyticsEvent.CompleteRegistration)
                 postSideEffect(TermSideEffect.NavigateToMain)
             }
             .onFailure { e ->
+                isSubmittingTerms = false
                 Timber.e(e)
                 postSideEffect(TermSideEffect.ShowToastMessage("약관 동의에 실패했습니다. 다시 시도해주세요."))
             }

@@ -9,6 +9,8 @@ android {
 
 dependencies {
     implementation(libs.amplitude.analytics.android)
+    implementation(libs.facebook.core)
+    implementation(libs.timber)
 
     testImplementation(libs.junit)
 }
