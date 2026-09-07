@@ -54,6 +54,10 @@ android {
         buildConfigField("String", "MONO_MANSION_URL", properties["MONO_MANSION_URL"].toString())
         buildConfigField("String", "MONO_MANSION_IMAGE_URL", properties["MONO_MANSION_IMAGE_URL"].toString())
         buildConfigField("String", "MONO_MANSION_IMAGE_URL_MIME_TYPE", properties["MONO_MANSION_IMAGE_URL_MIME_TYPE"].toString())
+
+        buildConfigField("String", "SAY_CHEESE_URL", properties["SAY_CHEESE_URL"].toString())
+        buildConfigField("String", "SAY_CHEESE_IMAGE_URL", properties["SAY_CHEESE_IMAGE_URL"].toString())
+        buildConfigField("String", "SAY_CHEESE_IMAGE_URL_MIME_TYPE", properties["SAY_CHEESE_IMAGE_URL_MIME_TYPE"].toString())
     }
 }
 

@@ -10,6 +10,7 @@ internal enum class QRImageProvider {
     HARU_FILM,
     PHOTO_GRAY,
     MONO_MANSION,
+    SAY_CHEESE,
 }
 
 internal object QRUrlMatcher {
@@ -23,7 +24,7 @@ internal object QRUrlMatcher {
             BuildConfig.HARU_FILM_URL,
             BuildConfig.PHOTO_GRAY_URL,
             BuildConfig.MONO_MANSION_URL,
-        ).any { url.containsConfiguredUrl(it) }
+        ).any { url.containsConfiguredUrl(it) } || SayCheeseUrlMatcher.isSupportedQrUrl(url)
     }
 
     fun isFirstDownloadRequired(url: String): Boolean {
@@ -78,6 +79,8 @@ internal object QRUrlMatcher {
                 mimeType = BuildConfig.MONO_MANSION_IMAGE_URL_MIME_TYPE,
                 ignoreCase = true,
             ) -> QRImageProvider.MONO_MANSION
+
+            SayCheeseUrlMatcher.isOriginalImageUrl(url) -> QRImageProvider.SAY_CHEESE
 
             else -> null
         }

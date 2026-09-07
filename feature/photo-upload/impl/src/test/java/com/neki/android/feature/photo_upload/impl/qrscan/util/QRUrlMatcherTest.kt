@@ -50,4 +50,19 @@ class QRUrlMatcherTest {
             ),
         )
     }
+
+    @Test
+    fun `세이치즈 QR과 원본 이미지를 지원한다`() {
+        assertTrue(
+            QRUrlMatcher.isSupportedBrand(
+                "http://thesaycheese.co.kr/?idx=KOR8GOC4Q38U1GMA316F&ymd=260826",
+            ),
+        )
+        assertEquals(
+            QRImageProvider.SAY_CHEESE,
+            QRUrlMatcher.detectImageProvider(
+                "http://thesaycheese.co.kr/image/260826/KOR8GOC4Q38U1GMA316F.jpg",
+            ),
+        )
+    }
 }

@@ -56,6 +56,11 @@ class PhotoWebViewClient(
                 onImageUrlDetected(url)
             }
 
+            QRImageProvider.SAY_CHEESE -> {
+                Timber.d("세이치즈 이미지")
+                onImageUrlDetected(url)
+            }
+
             null -> Unit
         }
 
