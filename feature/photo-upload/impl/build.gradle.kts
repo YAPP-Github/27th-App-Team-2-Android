@@ -24,7 +24,12 @@ android {
 
         buildConfigField("String", "PHOTOISM_URL", properties["PHOTOISM_URL"].toString())
         buildConfigField("String", "PHOTOISM_IMAGE_URL", properties["PHOTOISM_IMAGE_URL"].toString())
+        buildConfigField("String", "PHOTOISM_IMAGE_URL_2", properties["PHOTOISM_IMAGE_URL_2"].toString())
         buildConfigField("String", "PHOTOISM_IMAGE_URL_MIME_TYPE", properties["PHOTOISM_IMAGE_URL_MIME_TYPE"].toString())
+
+        buildConfigField("String", "PIXPIXLINK_URL", properties["PIXPIXLINK_URL"].toString())
+        buildConfigField("String", "PIXPIXLINK_IMAGE_URL", properties["PIXPIXLINK_IMAGE_URL"].toString())
+        buildConfigField("String", "PIXPIXLINK_IMAGE_URL_MIME_TYPE", properties["PIXPIXLINK_IMAGE_URL_MIME_TYPE"].toString())
 
         buildConfigField("String", "LIFE_FOUR_CUT_URL", properties["LIFE_FOUR_CUT_URL"].toString())
         buildConfigField("String", "LIFE_FOUR_CUT_IMAGE_URL", properties["LIFE_FOUR_CUT_IMAGE_URL"].toString())
